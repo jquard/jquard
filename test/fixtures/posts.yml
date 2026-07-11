@@ -1,0 +1,18 @@
+draft_post:
+  title: A Draft Post
+  body: Still being written.
+  status: draft
+  featured: false
+
+reviewing_post:
+  title: A Post In Review
+  body: Almost there.
+  status: reviewing
+  featured: true
+
+published_post:
+  title: A Published Post
+  body: Out in the world.
+  status: published
+  featured: false
+  published_at: <%= 3.days.ago %>
