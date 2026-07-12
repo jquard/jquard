@@ -1,7 +1,7 @@
 module Jquard
   class Resource
     class << self
-      attr_writer :model
+      attr_writer :model, :navigation_icon, :navigation_label, :navigation_group, :navigation_sort
 
       def inherited(subclass)
         super
@@ -14,6 +14,22 @@ module Jquard
 
       def slug
         name.demodulize.delete_suffix("Resource").underscore.pluralize
+      end
+
+      def navigation_icon
+        @navigation_icon || "rectangle-stack"
+      end
+
+      def navigation_label
+        @navigation_label || slug.titleize
+      end
+
+      def navigation_group
+        @navigation_group
+      end
+
+      def navigation_sort
+        @navigation_sort || 0
       end
     end
   end

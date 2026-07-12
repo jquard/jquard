@@ -9,6 +9,9 @@ gem "sqlite3"
 
 gem "propshaft"
 
+# Standalone Tailwind binary, used only to compile the gem's stylesheet.
+gem "tailwindcss-ruby"
+
 # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
 gem "rubocop-rails-omakase", require: false
 

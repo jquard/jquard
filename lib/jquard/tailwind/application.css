@@ -1,0 +1,97 @@
+@import "tailwindcss" source(none);
+
+@layer components {
+  .jq-body {
+    @apply min-h-screen bg-gray-50 font-sans text-gray-950 antialiased;
+  }
+
+  .jq-shell {
+    @apply flex min-h-screen;
+  }
+
+  .jq-sidebar {
+    @apply fixed inset-y-0 left-0 z-20 flex w-72 flex-col bg-white ring-1 ring-gray-950/5;
+  }
+
+  .jq-sidebar-header {
+    @apply flex h-16 shrink-0 items-center px-6;
+  }
+
+  .jq-brand {
+    @apply text-xl font-bold tracking-tight;
+    color: var(--jq-primary-600);
+  }
+
+  .jq-sidebar-nav {
+    @apply flex flex-1 flex-col gap-y-7 overflow-y-auto px-4 py-6;
+  }
+
+  .jq-nav-group-label {
+    @apply px-2 text-xs font-semibold tracking-wider text-gray-500 uppercase;
+  }
+
+  .jq-nav-items {
+    @apply mt-2 flex flex-col gap-y-1;
+  }
+
+  .jq-nav-item {
+    @apply flex items-center gap-x-3 rounded-lg px-2 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100;
+  }
+
+  .jq-nav-item-icon {
+    @apply h-6 w-6 shrink-0 text-gray-400;
+  }
+
+  .jq-nav-item--active {
+    @apply bg-gray-100;
+    color: var(--jq-primary-600);
+  }
+
+  .jq-nav-item--active .jq-nav-item-icon {
+    color: var(--jq-primary-600);
+  }
+
+  .jq-main {
+    @apply flex-1 pl-72;
+  }
+
+  .jq-topbar {
+    @apply sticky top-0 z-10 flex h-16 items-center justify-between bg-white/80 px-6 ring-1 ring-gray-950/5 backdrop-blur lg:px-8;
+  }
+
+  .jq-breadcrumbs {
+    @apply flex items-center gap-x-2 text-sm font-medium text-gray-500;
+  }
+
+  .jq-breadcrumb-sep {
+    @apply h-4 w-4 text-gray-400;
+  }
+
+  .jq-content {
+    @apply px-6 py-8 lg:px-8;
+  }
+
+  .jq-page-header {
+    @apply mb-6 flex items-center justify-between;
+  }
+
+  .jq-page-title {
+    @apply text-2xl font-bold tracking-tight text-gray-950;
+  }
+
+  .jq-card {
+    @apply overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5;
+  }
+
+  .jq-table-skeleton {
+    @apply w-full text-left text-sm;
+  }
+
+  .jq-table-skeleton th {
+    @apply border-b border-gray-200 px-4 py-3 font-semibold text-gray-950;
+  }
+
+  .jq-table-skeleton td {
+    @apply border-b border-gray-100 px-4 py-3 text-gray-700;
+  }
+}

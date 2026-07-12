@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jquard</title>
+  <title><%= Jquard.config.brand_name %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <%= jquard_theme_style %>
   <%= yield :head %>
 
-  <%= stylesheet_link_tag    "jquard/application", media: "all" %>
+  <%= stylesheet_link_tag "jquard/application", media: "all" %>
 </head>
-<body>
+<body class="jq-body">
+  <div class="jq-shell">
+    <aside class="jq-sidebar">
+      <div class="jq-sidebar-header">
+        <span class="jq-brand"><%= Jquard.config.brand_name %></span>
+      </div>
 
-<%= yield %>
+      <nav class="jq-sidebar-nav">
+        <% jquard_navigation.each do |group, resources| %>
+          <div>
+            <% if group %>
+              <p class="jq-nav-group-label"><%= group %></p>
+            <% end %>
+            <ul class="jq-nav-items">
+              <% resources.each do |resource| %>
+                <li>
+                  <%= link_to resource_path(resource.slug),
+                        class: class_names("jq-nav-item", "jq-nav-item--active" => params[:resource_slug] == resource.slug) do %>
+                    <%= jquard_icon(resource.navigation_icon, css_class: "jq-nav-item-icon") %>
+                    <span><%= resource.navigation_label %></span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </nav>
+    </aside>
 
+    <div class="jq-main">
+      <header class="jq-topbar">
+        <nav class="jq-breadcrumbs">
+          <% if @resource %>
+            <span><%= @resource.navigation_label %></span>
+          <% end %>
+        </nav>
+      </header>
+
+      <main class="jq-content">
+        <%= yield %>
+      </main>
+    </div>
+  </div>
 </body>
 </html>

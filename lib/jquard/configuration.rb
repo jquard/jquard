@@ -1,0 +1,39 @@
+module Jquard
+  class Configuration
+    RUBY_RED = {
+      50 => "#fdf4f3",
+      100 => "#fce7e5",
+      200 => "#f9d2cf",
+      300 => "#f4b0ab",
+      400 => "#ec817a",
+      500 => "#df574e",
+      600 => "#cc342d",
+      700 => "#ab2822",
+      800 => "#8e2420",
+      900 => "#762421",
+      950 => "#400f0d"
+    }.freeze
+
+    PALETTES = { ruby: RUBY_RED }.freeze
+
+    attr_accessor :brand_name
+    attr_reader :primary_color, :primary_color_palette
+
+    def initialize
+      @brand_name = "Jquard"
+      self.primary_color = :ruby
+    end
+
+    def primary_color=(value)
+      @primary_color_palette =
+        if value.is_a?(Hash)
+          value
+        else
+          PALETTES.fetch(value.to_sym) do
+            raise Jquard::Error, "Unknown palette #{value.inspect}. Available: #{PALETTES.keys.join(", ")}, or pass a Hash of shades."
+          end
+        end
+      @primary_color = value
+    end
+  end
+end
