@@ -16,6 +16,8 @@ module Jquard
 
     PALETTES = { ruby: RUBY_RED }.freeze
 
+    REQUIRED_SHADES = [ 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950 ].freeze
+
     attr_accessor :brand_name
     attr_reader :primary_color, :primary_color_palette
 
@@ -27,6 +29,11 @@ module Jquard
     def primary_color=(value)
       @primary_color_palette =
         if value.is_a?(Hash)
+          missing = REQUIRED_SHADES - value.keys
+          if missing.any?
+            raise Jquard::Error, "Palette hash is missing shades: #{missing.join(", ")}. All of #{REQUIRED_SHADES.join(", ")} are required."
+          end
+
           value
         else
           PALETTES.fetch(value.to_sym) do
