@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount Jquard::Engine => "/jquard"
+  mount Jquard::Engine => "/admin"
 end
