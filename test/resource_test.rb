@@ -14,10 +14,12 @@ class ResourceTest < ActiveSupport::TestCase
   end
 
   test "navigation attributes have Filament-style defaults" do
-    resource = Jquard::Resources::Posts::PostResource
+    resource = Class.new(Jquard::Resource) do
+      def self.name = "Jquard::Resources::Widgets::WidgetResource"
+    end
 
     assert_equal "rectangle-stack", resource.navigation_icon
-    assert_equal "Posts", resource.navigation_label
+    assert_equal "Widgets", resource.navigation_label
     assert_nil resource.navigation_group
     assert_equal 0, resource.navigation_sort
   end
