@@ -26,3 +26,5 @@ Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+Jquard ships with [Heroicons](https://heroicons.com) by [Tailwind Labs](https://tailwindcss.com), also MIT licensed — see [lib/jquard/icons/LICENSE](lib/jquard/icons/LICENSE).
