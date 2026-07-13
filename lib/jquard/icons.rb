@@ -1,5 +1,7 @@
 module Jquard
   module Icons
+    NAME_FORMAT = %r{\A(?:(outline|solid)/)?([a-z0-9-]+)\z}
+
     @cache = {}
 
     class << self
@@ -11,8 +13,11 @@ module Jquard
       private
 
       def read(name)
-        path = Jquard::Engine.root.join("lib/jquard/icons", "#{name}.svg")
-        raise Jquard::Error, "Unknown icon #{name.inspect}" unless path.exist?
+        variant, base = name.match(NAME_FORMAT)&.captures
+        path = Jquard::Engine.root.join("lib/jquard/icons", variant || "outline", "#{base}.svg") if base
+        unless path&.exist?
+          raise Jquard::Error, "Unknown icon #{name.inspect}. Use a Heroicon name like \"user-group\" or \"solid/user-group\"."
+        end
 
         path.read
       end
