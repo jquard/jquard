@@ -1,9 +1,18 @@
+require "view_component"
+require "turbo-rails"
+
 require "jquard/version"
 require "jquard/engine"
 require "jquard/configuration"
 require "jquard/registry"
 require "jquard/resource"
 require "jquard/icons"
+require "jquard/tables/columns/column"
+require "jquard/tables/columns/text_column"
+require "jquard/tables/columns/icon_column"
+require "jquard/tables/table"
+require "jquard/tables/components"
+require "jquard/tables/query"
 
 module Jquard
   class Error < StandardError; end

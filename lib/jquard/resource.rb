@@ -16,6 +16,14 @@ module Jquard
         name.demodulize.delete_suffix("Resource").underscore.pluralize
       end
 
+      def table(table)
+        table
+      end
+
+      def build_table
+        table(Jquard::Tables::Table.new).apply_default_columns(model)
+      end
+
       def navigation_icon
         @navigation_icon || "rectangle-stack"
       end
