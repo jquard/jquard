@@ -2,6 +2,15 @@ module Jquard
   module Tables
     module Columns
       class TextColumn < Column
+        def format(&block)
+          @formatter = block
+          self
+        end
+
+        def date_time(pattern = "%b %-d, %Y %H:%M")
+          format { |state| state.strftime(pattern) }
+        end
+
         def badge(value = true)
           @badge = value
           self
@@ -20,21 +29,16 @@ module Jquard
           (@color_map || {}).fetch(state.to_s.to_sym, :gray)
         end
 
-        def date_time(format = "%b %-d, %Y %H:%M")
-          @date_time_format = format
-          self
-        end
-
         def limit(count)
           @limit = count
           self
         end
 
         def display_value(record)
-          value = state_for(record)
-          return "" if value.nil?
+          state = state_for(record)
+          return "" if state.nil?
 
-          value = value.strftime(@date_time_format) if @date_time_format && value.respond_to?(:strftime)
+          value = @formatter ? @formatter.call(state) : state
           value = value.to_s
           @limit ? value.truncate(@limit) : value
         end
