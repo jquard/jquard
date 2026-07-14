@@ -144,6 +144,14 @@ end
 There is exactly **one way** to define a resource: the split-file structure above. No inline
 `form`/`table` shorthand (decided 2026-07-11 — one consistent way).
 
+> **Implementation note (2026-07-14):** the compact class style shown in these samples
+> (`class Jquard::Resources::Posts::PostResource`) cannot resolve relative sibling constants like
+> `Tables::PostsTable` — Ruby's lexical constant lookup skips intermediate namespaces in compact
+> declarations. Real files (and the generator) therefore use **nested module style**
+> (`module Jquard / module Resources / module Posts / class PostResource`), which makes relative
+> references work exactly like PHP's namespace imports. See
+> `test/dummy/app/jquard/resources/posts/` for the canonical shape.
+
 ### Form schema
 
 ```ruby
@@ -339,3 +347,6 @@ matching Filament's philosophy. ViewComponent is Jquard's only runtime dependenc
 | 2026-07-11 | Filament v4 look & feel, but **ruby-red default primary color** instead of amber. |
 | 2026-07-11 | Gem name **`jquard`** confirmed (free on RubyGems as of 2026-07-11); reserve early. |
 | 2026-07-11 | View layer: **ViewComponent** (only runtime dependency besides Rails). |
+| 2026-07-14 | Third runtime dependency: **turbo-rails** (Hotwire is the premise of the whole stack). Final MVP list: rails, view_component, turbo-rails. |
+| 2026-07-14 | Resource files use **nested module style**, not compact class style — required for relative sibling constants (`Tables::PostsTable`). |
+| 2026-07-14 | Column formatting: **single formatter slot** (`format { }` ≙ `formatStateUsing`), built-ins as sugar, `limit` as fixed post-processing — mirrors Filament's CanFormatState. |

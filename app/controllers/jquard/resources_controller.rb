@@ -13,7 +13,13 @@ module Jquard
     end
 
     def index
-      @records = @resource.model.all
+      @table = @resource.build_table
+      @query_params = params.permit(:q, :sort, :direction, :page, :per_page)
+      @result = Jquard::Tables::Query.new(
+        table: @table,
+        scope: @resource.model.all,
+        params: @query_params
+      ).result
     end
 
     private

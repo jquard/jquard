@@ -1,0 +1,6 @@
+<% if column.boolean? %>
+  <%= helpers.jquard_icon(state ? "check-circle" : "x-circle",
+        css_class: "jq-bool-icon jq-bool-icon--#{state ? "true" : "false"}") %>
+<% else %>
+  <span><%= state %></span>
+<% end %>
