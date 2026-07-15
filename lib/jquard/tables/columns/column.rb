@@ -2,6 +2,8 @@ module Jquard
   module Tables
     module Columns
       class Column
+        include Jquard::ComponentDispatch
+
         attr_reader :name
 
         def self.make(name)
@@ -39,10 +41,6 @@ module Jquard
 
         def state_for(record)
           record.public_send(name)
-        end
-
-        def component_class
-          "#{self.class.name}Component".constantize
         end
       end
     end

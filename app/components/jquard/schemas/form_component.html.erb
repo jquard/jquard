@@ -1,0 +1,10 @@
+<%= form_with model: record, url: form_url, class: "jq-form" do |form| %>
+  <% schema.components.each do |component| %>
+    <%= render component.component_class.new(component: component, form: form, record: record) %>
+  <% end %>
+
+  <div class="jq-form-actions">
+    <%= form.submit submit_label, class: "jq-btn jq-btn--primary" %>
+    <%= link_to "Cancel", cancel_url, class: "jq-btn jq-btn--secondary" %>
+  </div>
+<% end %>

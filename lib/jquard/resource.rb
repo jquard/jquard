@@ -24,6 +24,31 @@ module Jquard
         table(Jquard::Tables::Table.new).apply_default_columns(model)
       end
 
+      def form(schema)
+        schema
+      end
+
+      def build_form
+        form(Jquard::Schemas::Schema.new).apply_default_fields(model)
+      end
+
+      def pages
+        {}
+      end
+
+      def page_for(action)
+        defaults = {
+          index: Jquard::Resources::Pages::ListRecords,
+          create: Jquard::Resources::Pages::CreateRecord,
+          edit: Jquard::Resources::Pages::EditRecord
+        }
+        (pages[action] || defaults.fetch(action)).new(resource: self)
+      end
+
+      def singular_label
+        slug.singularize.titleize
+      end
+
       def navigation_icon
         @navigation_icon || "rectangle-stack"
       end

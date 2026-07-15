@@ -1,0 +1,18 @@
+<section class="jq-section">
+  <% if section.heading || section.description %>
+    <header class="jq-section-header">
+      <% if section.heading %>
+        <h2 class="jq-section-heading"><%= section.heading %></h2>
+      <% end %>
+      <% if section.description %>
+        <p class="jq-section-description"><%= section.description %></p>
+      <% end %>
+    </header>
+  <% end %>
+
+  <div class="jq-schema-grid" style="<%= grid_style %>">
+    <% section.schema.each do |child| %>
+      <%= render child.component_class.new(component: child, form: form, record: record) %>
+    <% end %>
+  </div>
+</section>

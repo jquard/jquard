@@ -1,0 +1,5 @@
+<div class="jq-schema-grid" style="<%= grid_style %>">
+  <% grid.schema.each do |child| %>
+    <%= render child.component_class.new(component: child, form: form, record: record) %>
+  <% end %>
+</div>

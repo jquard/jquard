@@ -28,6 +28,9 @@
               <% end %>
             </th>
           <% end %>
+          <% if table.record_actions.any? %>
+            <th class="jq-actions-header"></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -36,11 +39,18 @@
             <% table.columns.each do |column| %>
               <td><%= render column.component_class.new(column: column, record: record) %></td>
             <% end %>
+            <% if table.record_actions.any? %>
+              <td class="jq-row-actions">
+                <% table.record_actions.each do |action| %>
+                  <%= render action.component_class.new(action: action, resource: resource, record: record) %>
+                <% end %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
         <% if result.records.empty? %>
           <tr>
-            <td colspan="<%= table.columns.size %>" class="jq-empty-state">No records found</td>
+            <td colspan="<%= table.columns.size + (table.record_actions.any? ? 1 : 0) %>" class="jq-empty-state">No records found</td>
           </tr>
         <% end %>
       </tbody>

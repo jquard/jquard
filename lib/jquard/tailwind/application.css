@@ -224,4 +224,164 @@
   .jq-empty-state {
     @apply px-6 py-12 text-center text-sm text-gray-500;
   }
+
+  .jq-actions-header {
+    @apply w-1;
+  }
+
+  .jq-row-actions {
+    @apply flex items-center justify-end gap-x-3 whitespace-nowrap;
+  }
+
+  .jq-row-action {
+    @apply inline-flex items-center gap-x-1 bg-transparent text-sm font-medium text-gray-600 hover:text-gray-950;
+  }
+
+  .jq-row-action--danger {
+    @apply text-red-600 hover:text-red-700;
+  }
+
+  .jq-row-action-icon {
+    @apply h-4 w-4;
+  }
+
+  .jq-form {
+    @apply flex max-w-3xl flex-col gap-y-6;
+  }
+
+  .jq-section {
+    @apply rounded-xl bg-white p-6 shadow-sm ring-1 ring-gray-950/5;
+  }
+
+  .jq-section-header {
+    @apply mb-6;
+  }
+
+  .jq-section-heading {
+    @apply text-base font-semibold text-gray-950;
+  }
+
+  .jq-section-description {
+    @apply mt-1 text-sm text-gray-500;
+  }
+
+  .jq-schema-grid {
+    @apply grid gap-6;
+  }
+
+  .jq-field {
+    @apply flex flex-col gap-y-1.5;
+  }
+
+  .jq-label {
+    @apply text-sm font-medium text-gray-950;
+  }
+
+  .jq-required {
+    @apply ml-0.5 text-red-600;
+  }
+
+  .jq-input {
+    @apply w-full rounded-lg border-0 bg-white px-3 py-1.5 text-sm text-gray-950 ring-1 ring-gray-950/10 placeholder:text-gray-400;
+  }
+
+  .jq-input:focus {
+    @apply ring-2 outline-none;
+    --tw-ring-color: var(--jq-primary-600);
+  }
+
+  .jq-input--error {
+    @apply ring-red-600;
+  }
+
+  .jq-input--error:focus {
+    --tw-ring-color: var(--color-red-600);
+  }
+
+  .jq-field-error {
+    @apply text-sm text-red-600;
+  }
+
+  .jq-helper-text {
+    @apply text-sm text-gray-500;
+  }
+
+  .jq-field-inline {
+    @apply flex items-center gap-x-3;
+  }
+
+  .jq-checkbox {
+    @apply h-4 w-4 rounded border-gray-300;
+    accent-color: var(--jq-primary-600);
+  }
+
+  .jq-toggle {
+    @apply relative inline-flex;
+  }
+
+  .jq-toggle-input {
+    @apply absolute inset-0 z-10 cursor-pointer opacity-0;
+  }
+
+  .jq-toggle-track {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition-colors;
+  }
+
+  .jq-toggle-thumb {
+    @apply absolute left-0.5 h-5 w-5 rounded-full bg-white shadow-sm transition-transform;
+  }
+
+  .jq-toggle-input:checked + .jq-toggle-track {
+    background-color: var(--jq-primary-600);
+  }
+
+  .jq-toggle-input:checked + .jq-toggle-track .jq-toggle-thumb {
+    transform: translateX(1.25rem);
+  }
+
+  .jq-form-actions {
+    @apply flex items-center gap-x-3;
+  }
+
+  .jq-btn {
+    @apply inline-flex cursor-pointer items-center gap-x-1.5 rounded-lg px-3 py-2 text-sm font-semibold;
+  }
+
+  .jq-btn-icon {
+    @apply h-5 w-5;
+  }
+
+  .jq-btn--primary {
+    @apply text-white;
+    background-color: var(--jq-primary-600);
+  }
+
+  .jq-btn--primary:hover {
+    background-color: var(--jq-primary-500);
+  }
+
+  .jq-btn--secondary {
+    @apply bg-white text-gray-950 ring-1 ring-gray-950/10 hover:bg-gray-50;
+  }
+
+  .jq-toast {
+    @apply fixed top-4 right-4 z-50 flex items-center gap-x-2 rounded-xl bg-white px-4 py-3 text-sm font-medium text-gray-950 shadow-lg ring-1 ring-gray-950/5;
+    animation: jq-toast-out 4s forwards;
+  }
+
+  .jq-toast-icon {
+    @apply h-6 w-6 text-green-500;
+  }
+}
+
+@keyframes jq-toast-out {
+  0%,
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }

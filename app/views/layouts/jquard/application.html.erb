@@ -51,6 +51,13 @@
       </header>
 
       <main class="jq-content">
+        <% if notice.present? %>
+          <div class="jq-toast" role="status">
+            <%= jquard_icon("check-circle", css_class: "jq-toast-icon") %>
+            <span><%= notice %></span>
+          </div>
+        <% end %>
+
         <%= yield %>
       </main>
     </div>

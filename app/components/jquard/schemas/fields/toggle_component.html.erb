@@ -1,0 +1,6 @@
+<%= render wrapper(inline: true) do %>
+  <span class="jq-toggle">
+    <%= form.check_box field.name, class: "jq-toggle-input", disabled: field.disabled? || nil %>
+    <span class="jq-toggle-track"><span class="jq-toggle-thumb"></span></span>
+  </span>
+<% end %>

@@ -1,0 +1,3 @@
+<%= render wrapper do %>
+  <%= form.public_send("#{field.input_type}_field", field.name, **input_options) %>
+<% end %>
