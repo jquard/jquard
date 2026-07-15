@@ -10,6 +10,7 @@
   <%= yield :head %>
 
   <%= stylesheet_link_tag "jquard/application", media: "all" %>
+  <%= javascript_include_tag "turbo.min", type: "module" %>
 </head>
 <body class="jq-body">
   <div class="jq-shell">

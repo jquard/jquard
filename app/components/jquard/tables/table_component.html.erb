@@ -1,0 +1,86 @@
+<div class="jq-card">
+  <% if table.searchable? %>
+    <div class="jq-table-toolbar">
+      <%= form_with url: search_url, method: :get, class: "jq-search" do |form| %>
+        <% query_params.except(:q, :page).each do |key, value| %>
+          <%= form.hidden_field key, value: value %>
+        <% end %>
+        <%= helpers.jquard_icon("magnifying-glass", css_class: "jq-search-icon") %>
+        <%= form.search_field :q, value: query_params[:q], placeholder: "Search",
+              class: "jq-search-input", autocomplete: "off" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="jq-table-scroll">
+    <table class="jq-table">
+      <thead>
+        <tr>
+          <% table.columns.each do |column| %>
+            <th>
+              <% if column.sortable? %>
+                <%= link_to sort_url(column), class: "jq-sort-link" do %>
+                  <span><%= column.label %></span>
+                  <%= helpers.jquard_icon(sort_icon(column), css_class: "jq-sort-icon") %>
+                <% end %>
+              <% else %>
+                <%= column.label %>
+              <% end %>
+            </th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% result.records.each do |record| %>
+          <tr>
+            <% table.columns.each do |column| %>
+              <td><%= render column.component_class.new(column: column, record: record) %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        <% if result.records.empty? %>
+          <tr>
+            <td colspan="<%= table.columns.size %>" class="jq-empty-state">No records found</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="jq-table-footer">
+    <p class="jq-table-meta">
+      Showing <%= result.from %> to <%= result.to %> of <%= result.total_count %> results
+    </p>
+
+    <div class="jq-per-page">
+      <span>Per page</span>
+      <% Jquard::Tables::Query::PER_PAGE_OPTIONS.each do |count| %>
+        <%= link_to count, per_page_url(count),
+              class: class_names("jq-page-link", "jq-page-link--current" => result.per_page == count) %>
+      <% end %>
+    </div>
+
+    <nav class="jq-pagination">
+      <% if result.page > 1 %>
+        <%= link_to "Previous", page_url(result.page - 1), class: "jq-page-link" %>
+      <% else %>
+        <span class="jq-page-link jq-page-link--disabled">Previous</span>
+      <% end %>
+
+      <% page_items.each do |item| %>
+        <% if item == :gap %>
+          <span class="jq-page-gap">&hellip;</span>
+        <% else %>
+          <%= link_to item, page_url(item),
+                class: class_names("jq-page-link", "jq-page-link--current" => item == result.page) %>
+        <% end %>
+      <% end %>
+
+      <% if result.page < result.pages %>
+        <%= link_to "Next", page_url(result.page + 1), class: "jq-page-link" %>
+      <% else %>
+        <span class="jq-page-link jq-page-link--disabled">Next</span>
+      <% end %>
+    </nav>
+  </div>
+</div>

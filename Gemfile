@@ -12,6 +12,10 @@ gem "propshaft"
 # Standalone Tailwind binary, used only to compile the gem's stylesheet.
 gem "tailwindcss-ruby"
 
+group :test do
+  gem "capybara"
+end
+
 # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
 gem "rubocop-rails-omakase", require: false
 
