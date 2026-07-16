@@ -15,7 +15,7 @@ class FormComponentTest < ViewComponent::TestCase
       schema: schema, record: Post.new, resource: Jquard::Resources::Posts::PostResource
     )
 
-    assert_selector "form[action='/posts'][method='post']"
+    assert_selector "form[action='/admin/posts'][method='post']"
     assert_selector "input[type='submit'][value='Create']"
     assert_selector "input[name='post[title]']"
   end
