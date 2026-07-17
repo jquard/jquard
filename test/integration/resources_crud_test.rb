@@ -95,6 +95,6 @@ class ResourcesCrudTest < ActionDispatch::IntegrationTest
     get "/admin/posts"
 
     assert_includes response.body, 'id="jquard-confirm-dialog"'
-    assert_includes response.body, "jquard/confirm"
+    assert_includes response.body, "jquard/application"
   end
 end

@@ -58,39 +58,56 @@
   </div>
 
   <div class="jq-table-footer">
-    <p class="jq-table-meta">
-      Showing <%= result.from %> to <%= result.to %> of <%= result.total_count %> results
-    </p>
+    <nav class="jq-pagination" aria-label="Pagination">
+      <span class="jq-pagination-overview">
+        Showing <%= result.from %> to <%= result.to %> of <%= result.total_count %> results
+      </span>
 
-    <div class="jq-per-page">
-      <span>Per page</span>
-      <% Jquard::Tables::Query::PER_PAGE_OPTIONS.each do |count| %>
-        <%= link_to count, per_page_url(count),
-              class: class_names("jq-page-link", "jq-page-link--current" => result.per_page == count) %>
-      <% end %>
-    </div>
-
-    <nav class="jq-pagination">
-      <% if result.page > 1 %>
-        <%= link_to "Previous", page_url(result.page - 1), class: "jq-page-link" %>
-      <% else %>
-        <span class="jq-page-link jq-page-link--disabled">Previous</span>
-      <% end %>
-
-      <% page_items.each do |item| %>
-        <% if item == :gap %>
-          <span class="jq-page-gap">&hellip;</span>
-        <% else %>
-          <%= link_to item, page_url(item),
-                class: class_names("jq-page-link", "jq-page-link--current" => item == result.page) %>
+      <div class="jq-pagination-per-page">
+        <%= form_with url: search_url, method: :get do |form| %>
+          <% query_params.except(:per_page, :page).each do |key, value| %>
+            <%= form.hidden_field key, value: value %>
+          <% end %>
+          <label class="jq-input-group">
+            <span class="jq-input-group-prefix">Per page</span>
+            <%= form.select :per_page,
+                  options_for_select(Jquard::Tables::Query::PER_PAGE_OPTIONS, result.per_page),
+                  {}, class: "jq-per-page-select", data: { jq_autosubmit: true } %>
+          </label>
         <% end %>
-      <% end %>
+      </div>
 
-      <% if result.page < result.pages %>
-        <%= link_to "Next", page_url(result.page + 1), class: "jq-page-link" %>
-      <% else %>
-        <span class="jq-page-link jq-page-link--disabled">Next</span>
-      <% end %>
+      <ol class="jq-pagination-items">
+        <% if result.page > 1 %>
+          <li class="jq-pagination-item">
+            <%= link_to page_url(result.page - 1), class: "jq-pagination-item-btn", aria: { label: "Previous" } do %>
+              <%= helpers.jquard_icon("chevron-left", css_class: "jq-pagination-icon") %>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% page_items.each do |item| %>
+          <% if item == :gap %>
+            <li class="jq-pagination-item jq-pagination-item--disabled">
+              <span class="jq-pagination-item-btn"><span class="jq-pagination-item-label">&hellip;</span></span>
+            </li>
+          <% else %>
+            <li class="<%= class_names("jq-pagination-item", "jq-pagination-item--active" => item == result.page) %>">
+              <%= link_to page_url(item), class: "jq-pagination-item-btn" do %>
+                <span class="jq-pagination-item-label"><%= item %></span>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+
+        <% if result.page < result.pages %>
+          <li class="jq-pagination-item">
+            <%= link_to page_url(result.page + 1), class: "jq-pagination-item-btn", aria: { label: "Next" } do %>
+              <%= helpers.jquard_icon("chevron-right", css_class: "jq-pagination-icon") %>
+            <% end %>
+          </li>
+        <% end %>
+      </ol>
     </nav>
   </div>
 </div>

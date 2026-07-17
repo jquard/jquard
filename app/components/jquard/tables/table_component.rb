@@ -39,14 +39,10 @@ module Jquard
         url_with(page: page == 1 ? nil : page)
       end
 
-      def per_page_url(count)
-        url_with(per_page: count, page: nil)
-      end
-
       def page_items
-        return (1..result.pages).to_a if result.pages <= 7
+        return (1..result.pages).to_a if result.pages <= 5
 
-        window = ((result.page - 2)..(result.page + 2)).select { |page| page > 1 && page < result.pages }
+        window = ((result.page - 1)..(result.page + 1)).select { |page| page > 1 && page < result.pages }
         items = [ 1 ]
         items << :gap if window.first > 2
         items.concat(window)

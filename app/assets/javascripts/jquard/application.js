@@ -34,3 +34,7 @@ if (window.Turbo) {
     Turbo.setConfirmMethod(confirmWithDialog)
   }
 }
+
+document.addEventListener("change", (event) => {
+  if (event.target.matches("[data-jq-autosubmit]")) event.target.form?.requestSubmit()
+})
