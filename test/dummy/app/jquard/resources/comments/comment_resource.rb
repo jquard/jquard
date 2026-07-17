@@ -3,6 +3,7 @@ module Jquard
     module Comments
       class CommentResource < Jquard::Resource
         self.model = ::Comment
+        self.navigation_icon = "chat-bubble-left-right"
 
         def self.form(schema)
           Schemas::CommentForm.configure(schema)
