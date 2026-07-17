@@ -1,0 +1,19 @@
+module Jquard
+  module Resources
+    module <%= plural_class_name %>
+      module Schemas
+        class <%= class_name %>Form
+          include Jquard::Schemas::Components
+
+          def self.configure(schema)
+            schema.components([
+              Section.make("Details").columns(2).schema([
+                <%= form_field_declarations.join(",\n                ") %>
+              ])
+            ])
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,20 @@
+module Jquard
+  module Resources
+    module <%= plural_class_name %>
+      module Tables
+        class <%= plural_class_name %>Table
+          include Jquard::Tables::Components
+
+          def self.configure(table)
+            table
+              .columns([
+                <%= table_column_declarations.join(",\n                ") %>
+              ])
+              .record_actions([ EditAction.make, DeleteAction.make ])<% if default_sort? %>
+              .default_sort(:created_at, :desc)<% end %>
+          end
+        end
+      end
+    end
+  end
+end
