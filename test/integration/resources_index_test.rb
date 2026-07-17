@@ -12,7 +12,7 @@ class ResourcesIndexTest < ActionDispatch::IntegrationTest
   test "renders the shell with brand name and navigation" do
     get "/admin/posts"
 
-    assert_includes response.body, "Dummy Admin"
+    assert_includes response.body, "Jquard Admin Panel"
     assert_includes response.body, "jq-nav-item--active"
     assert_includes response.body, "--jq-primary-600: #cc342d"
   end
