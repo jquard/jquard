@@ -1,0 +1,10 @@
+module Jquard
+  module Resources
+    module <%= plural_class_name %>
+      module Pages
+        class Edit<%= class_name %> < Jquard::Resources::Pages::EditRecord
+        end
+      end
+    end
+  end
+end

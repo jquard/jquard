@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_11_194902) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_17_080000) do
+  create_table "comments", force: :cascade do |t|
+    t.boolean "approved", default: false, null: false
+    t.string "author_name", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "posted_at"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false

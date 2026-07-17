@@ -1,0 +1,25 @@
+module Jquard
+  module Resources
+    module <%= plural_class_name %>
+      class <%= class_name %>Resource < Jquard::Resource
+        self.model = ::<%= class_name %>
+
+        def self.form(schema)
+          Schemas::<%= class_name %>Form.configure(schema)
+        end
+
+        def self.table(table)
+          Tables::<%= plural_class_name %>Table.configure(table)
+        end
+
+        def self.pages
+          {
+            index: Pages::List<%= plural_class_name %>,
+            create: Pages::Create<%= class_name %>,
+            edit: Pages::Edit<%= class_name %>
+          }
+        end
+      end
+    end
+  end
+end
