@@ -1,0 +1,5 @@
+<%= render wrapper do %>
+  <%= form.select field.name, field.choices,
+        { include_blank: field.placeholder || false },
+        class: input_classes, required: field.required? || nil, disabled: field.disabled? || nil %>
+<% end %>

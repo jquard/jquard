@@ -15,6 +15,13 @@ module Jquard
         self
       end
 
+      def record_actions(list = nil)
+        return @record_actions ||= [] if list.nil?
+
+        @record_actions = list
+        self
+      end
+
       def searchable_columns
         columns.select(&:searchable?)
       end

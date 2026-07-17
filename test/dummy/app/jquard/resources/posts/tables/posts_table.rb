@@ -13,6 +13,7 @@ module Jquard
                 IconColumn.make(:featured).boolean,
                 TextColumn.make(:published_at).date_time.sortable
               ])
+              .record_actions([ EditAction.make, DeleteAction.make ])
               .default_sort(:created_at, :desc)
           end
         end

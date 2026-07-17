@@ -1,0 +1,11 @@
+<%= button_to helpers.resource_record_path(resource.slug, record.id), method: :delete,
+      class: "jq-row-action jq-row-action--danger",
+      form: { data: {
+        turbo_frame: "_top",
+        turbo_confirm: action.confirm,
+        confirm_heading: confirm_heading,
+        confirm_button: action.confirm_button
+      } } do %>
+  <%= helpers.jquard_icon(action.icon, css_class: "jq-row-action-icon") %>
+  <span><%= action.label %></span>
+<% end %>

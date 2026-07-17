@@ -1,5 +1,9 @@
 <header class="jq-page-header">
-  <h1 class="jq-page-title"><%= @resource.navigation_label %></h1>
+  <h1 class="jq-page-title"><%= @page.title %></h1>
+  <%= link_to new_resource_path(@resource.slug), class: "jq-btn jq-btn--primary" do %>
+    <%= jquard_icon("plus", css_class: "jq-btn-icon") %>
+    <span>New <%= @resource.singular_label.downcase %></span>
+  <% end %>
 </header>
 
 <%= turbo_frame_tag "jquard-table", data: { turbo_action: "advance" } do %>

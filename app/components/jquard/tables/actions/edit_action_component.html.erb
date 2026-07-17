@@ -1,0 +1,5 @@
+<%= link_to helpers.edit_resource_path(resource.slug, record.id),
+      class: "jq-row-action", data: { turbo_frame: "_top" } do %>
+  <%= helpers.jquard_icon(action.icon, css_class: "jq-row-action-icon") %>
+  <span><%= action.label %></span>
+<% end %>
