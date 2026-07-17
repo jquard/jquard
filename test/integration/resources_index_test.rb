@@ -20,7 +20,7 @@ class ResourcesIndexTest < ActionDispatch::IntegrationTest
   test "root redirects to the first registered resource" do
     get "/admin"
 
-    assert_redirected_to "/admin/posts"
+    assert_redirected_to "/admin/comments"
   end
 
   test "renders the table inside a turbo frame with dsl-defined cells" do

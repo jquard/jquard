@@ -1,0 +1,10 @@
+module Jquard
+  module Resources
+    module <%= plural_class_name %>
+      module Pages
+        class List<%= plural_class_name %> < Jquard::Resources::Pages::ListRecords
+        end
+      end
+    end
+  end
+end

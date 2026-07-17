@@ -1,0 +1,9 @@
+Jquard.configure do |config|
+  config.brand_name = <%= Rails.application.class.module_parent_name.titleize.inspect %>
+
+  # The primary color accepts a built-in palette name or a full Tailwind-style
+  # hash of shades (50, 100, ..., 950).
+  #
+  # config.primary_color = :ruby
+  # config.primary_color = { 50 => "#eff6ff", 100 => "#dbeafe", ..., 950 => "#172554" }
+end
