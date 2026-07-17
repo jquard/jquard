@@ -11,6 +11,10 @@ module Jquard
         private
 
         attr_reader :action, :resource, :record
+
+        def confirm_heading
+          action.confirm_heading || "Delete #{resource.singular_label.downcase}"
+        end
       end
     end
   end

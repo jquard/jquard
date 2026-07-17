@@ -234,7 +234,7 @@
   }
 
   .jq-row-action {
-    @apply inline-flex items-center gap-x-1 bg-transparent text-sm font-medium text-gray-600 hover:text-gray-950;
+    @apply inline-flex cursor-pointer items-center gap-x-1 bg-transparent text-sm font-medium text-gray-600 hover:text-gray-950;
   }
 
   .jq-row-action--danger {
@@ -371,6 +371,46 @@
 
   .jq-toast-icon {
     @apply h-6 w-6 text-green-500;
+  }
+
+  .jq-modal {
+    @apply m-auto w-full max-w-md rounded-xl bg-white p-0 shadow-xl ring-1 ring-gray-950/5;
+  }
+
+  .jq-modal::backdrop {
+    background-color: rgb(3 7 18 / 0.5);
+  }
+
+  .jq-modal-window {
+    @apply flex flex-col items-center gap-y-1.5 p-6 text-center;
+  }
+
+  .jq-modal-icon-circle {
+    @apply mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-red-100;
+  }
+
+  .jq-modal-icon {
+    @apply h-6 w-6 text-red-600;
+  }
+
+  .jq-modal-heading {
+    @apply text-base font-semibold text-gray-950;
+  }
+
+  .jq-modal-description {
+    @apply text-sm text-gray-500;
+  }
+
+  .jq-modal-actions {
+    @apply mt-4 grid w-full grid-cols-2 gap-3;
+  }
+
+  .jq-modal-actions .jq-btn {
+    @apply justify-center;
+  }
+
+  .jq-btn--danger {
+    @apply bg-red-600 text-white hover:bg-red-500;
   }
 }
 

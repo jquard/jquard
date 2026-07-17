@@ -90,4 +90,11 @@ class ResourcesCrudTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "/admin/posts/#{posts(:draft_post).id}/edit"
     assert_includes response.body, "jq-row-action--danger"
   end
+
+  test "layout ships the confirmation dialog" do
+    get "/admin/posts"
+
+    assert_includes response.body, 'id="jquard-confirm-dialog"'
+    assert_includes response.body, "jquard/confirm"
+  end
 end

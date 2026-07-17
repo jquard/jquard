@@ -14,6 +14,7 @@ class DeleteActionComponentTest < ViewComponent::TestCase
     )
 
     assert_selector "form[action='/admin/posts/#{posts(:draft_post).id}'][data-turbo-frame='_top'][data-turbo-confirm]"
+    assert_selector "form[data-confirm-heading='Delete post'][data-confirm-button='Delete']"
     assert_selector "input[name='_method'][value='delete']", visible: false
     assert_selector "button.jq-row-action--danger", text: "Delete"
   end
