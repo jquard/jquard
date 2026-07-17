@@ -1,8 +1,10 @@
 # Jquard
 
-Build admin panels in Rails with a few lines of Ruby.
+Build modern admin panels and apps in Ruby on Rails with a few lines of code.
 
-Jquard is a mountable Rails engine, inspired by [Filament](https://filamentphp.com) for Laravel. You describe your models with a chainable Ruby DSL and get searchable, sortable, paginated tables and create/edit forms — styled, and driven by Hotwire so pages update without a full reload. There's a generator that reads your model and writes the first version for you, so you're rarely starting from a blank file.
+Jquard is a mountable Rails engine, inspired by [Filament](https://filamentphp.com) from the Laravel ecosystem. With Jquard, you can describe your models with a chainable Ruby DSL and get searchable, sortable, and paginated tables — styled with Tailwind and Heroicons, and driven by Rails defaults.
+
+The built-in generator reads your models and writes the first version for you, so you never start from a blank file.
 
 ![The Jquard admin panel](https://raw.githubusercontent.com/jquard/jquard/main/docs/images/posts.png)
 
@@ -253,7 +255,7 @@ For the design decisions and the full roadmap, see [docs/DESIGN.md](docs/DESIGN.
 
 ## Status
 
-Jquard is early. Today it covers the core admin panel: list, create, edit, and delete, plus the generator. Planned next: authentication, authorization, a read-only view page, relation managers, custom and bulk actions, and a dashboard. It follows [semantic versioning](https://semver.org); expect changes before 1.0.
+Jquard is early. Today it covers the core admin panel: list, create, edit, and delete, plus the generator. Planned next: authentication, authorization, a read-only view page, relation managers, custom and bulk actions, and a dashboard. It follows semantic versioning.
 
 ## Development
 
