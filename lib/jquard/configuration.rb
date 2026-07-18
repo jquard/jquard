@@ -18,7 +18,7 @@ module Jquard
 
     REQUIRED_SHADES = [ 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950 ].freeze
 
-    attr_accessor :brand_name
+    attr_accessor :brand_name, :current_user_method, :sign_out_path, :sign_out_method
     attr_reader :primary_color, :primary_color_palette, :authenticate
 
     def initialize

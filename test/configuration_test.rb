@@ -36,6 +36,14 @@ class ConfigurationTest < ActiveSupport::TestCase
     assert_nil config.authenticate
   end
 
+  test "has no user menu configuration by default" do
+    config = Jquard::Configuration.new
+
+    assert_nil config.current_user_method
+    assert_nil config.sign_out_path
+    assert_nil config.sign_out_method
+  end
+
   test "authenticate_with stores the given block" do
     config = Jquard::Configuration.new
     config.authenticate_with { :authenticated }

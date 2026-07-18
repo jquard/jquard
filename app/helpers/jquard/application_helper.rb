@@ -18,5 +18,38 @@ module Jquard
 
       tag.style(":root { #{variables} }".html_safe)
     end
+
+    def jquard_current_user
+      method = Jquard.config.current_user_method
+      method ||= "current_#{::Devise.default_scope}" if defined?(::Devise) && ::Devise.default_scope
+      return unless method && controller.respond_to?(method)
+
+      controller.send(method)
+    end
+
+    def jquard_user_name(user)
+      user.try(:name).presence || user.try(:email).presence || user.to_s
+    end
+
+    def jquard_user_initials(user)
+      name = jquard_user_name(user).to_s
+      name = name.split("@").first.to_s if name.include?("@")
+      name.split(/[\s._-]+/).filter_map { |part| part[0] }.join[0, 2].to_s.upcase
+    end
+
+    def jquard_sign_out_path
+      path = Jquard.config.sign_out_path
+      return instance_exec(&path) if path.respond_to?(:call)
+      return path if path.present?
+
+      if defined?(::Devise) && ::Devise.default_scope
+        helper_name = "destroy_#{::Devise.default_scope}_session_path"
+        main_app.send(helper_name) if main_app.respond_to?(helper_name)
+      end
+    end
+
+    def jquard_sign_out_method
+      Jquard.config.sign_out_method || (defined?(::Devise) ? ::Devise.sign_out_via : :delete)
+    end
   end
 end
