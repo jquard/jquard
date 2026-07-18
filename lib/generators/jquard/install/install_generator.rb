@@ -20,8 +20,8 @@ module Jquard
         say ""
         say "Jquard is mounted at /#{options[:path]}.", :green
         say ""
-        say "Next: configure authentication in config/initializers/jquard.rb —", :yellow
-        say "the panel refuses to serve until you do.", :yellow
+        say "Next: install devise and configure authentication in config/initializers/jquard.rb —", :yellow
+        say "if you do not want your admin panel exposed.", :yellow
         say ""
         say "Then generate your first resource with:", :green
         say ""
