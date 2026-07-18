@@ -21,7 +21,6 @@ module Jquard
 
     def jquard_current_user
       method = Jquard.config.current_user_method
-      method ||= "current_#{::Devise.default_scope}" if defined?(::Devise) && ::Devise.default_scope
       return unless method && controller.respond_to?(method)
 
       controller.send(method)
@@ -40,16 +39,12 @@ module Jquard
     def jquard_sign_out_path
       path = Jquard.config.sign_out_path
       return instance_exec(&path) if path.respond_to?(:call)
-      return path if path.present?
 
-      if defined?(::Devise) && ::Devise.default_scope
-        helper_name = "destroy_#{::Devise.default_scope}_session_path"
-        main_app.send(helper_name) if main_app.respond_to?(helper_name)
-      end
+      path.presence
     end
 
     def jquard_sign_out_method
-      Jquard.config.sign_out_method || (defined?(::Devise) ? ::Devise.sign_out_via : :delete)
+      Jquard.config.sign_out_method || :delete
     end
   end
 end
