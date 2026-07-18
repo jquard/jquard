@@ -1,6 +1,10 @@
 require "test_helper"
 
 class ResourcesIndexTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_in users(:admin)
+  end
+
   test "lists the records of a registered resource" do
     get "/admin/posts"
 

@@ -1,6 +1,10 @@
 require "test_helper"
 
 class ResourcesCrudTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_in users(:admin)
+  end
+
   test "create page renders the dsl-defined form" do
     get "/admin/posts/create"
 

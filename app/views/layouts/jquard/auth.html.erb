@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= Jquard.config.brand_name %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= jquard_theme_style %>
+  <%= yield :head %>
+
+  <%= stylesheet_link_tag "jquard/application", media: "all" %>
+</head>
+<body class="jq-body">
+  <main class="jq-auth">
+    <div class="jq-auth-card">
+      <span class="jq-brand"><%= Jquard.config.brand_name %></span>
+
+      <% if alert.present? %>
+        <p class="jq-auth-flash jq-auth-flash--alert" role="alert"><%= alert %></p>
+      <% end %>
+      <% if notice.present? %>
+        <p class="jq-auth-flash jq-auth-flash--notice" role="status"><%= notice %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </main>
+</body>
+</html>

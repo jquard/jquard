@@ -12,6 +12,10 @@ gem "propshaft"
 # Standalone Tailwind binary, used only to compile the gem's stylesheet.
 gem "tailwindcss-ruby"
 
+# Devise is not a runtime dependency of the gem. It is used only by the dummy
+# app to exercise the optional Devise integration (auth layout + views).
+gem "devise"
+
 group :test do
   gem "capybara"
 end
