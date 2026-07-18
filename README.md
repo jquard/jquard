@@ -228,11 +228,9 @@ Jquard does not ship an authentication system. Your app owns the users, the
 sessions, and the sign-in rules; Jquard hooks into whatever you already use and
 restyles its screens to match the panel.
 
-Authentication is **required**: the panel raises unless `authenticate_with` is
-configured. The install generator satisfies that with an empty block —
+The install generator disables authentication with an empty block —
 `config.authenticate_with { }`, which means *no authentication* and leaves the
-panel public. That is fine while you build locally; swap it for the real thing
-before you deploy.
+panel public. That is fine while you build locally; for production you would want to add authentication.
 
 Today [Devise](https://github.com/heartcombo/devise) is the documented and
 supported option.
@@ -327,9 +325,6 @@ generator writes:
 config.authenticate_with { }
 ```
 
-Jquard cannot tell an intentional empty block from a forgotten one, so this is
-the one thing to check before going to production.
-
 ## Theming
 
 The install generator wrote `config/initializers/jquard.rb`:
@@ -351,14 +346,6 @@ end
 ```
 
 The brand name shows in the sidebar; the primary color is used for buttons, links, the active nav item, and form focus rings.
-
-## How it works
-
-- **Resources register themselves.** Any class under `app/jquard/resources/` that inherits from `Jquard::Resource` shows up in the panel — no central list to maintain.
-- **State lives in the URL.** Search, sort, and page are query parameters, so every view is shareable and survives a refresh.
-- **Hotwire drives the updates.** Searching, sorting, and paging swap the table in place through a Turbo Frame instead of reloading the page.
-
-For the design decisions and the full roadmap, see [docs/DESIGN.md](docs/DESIGN.md).
 
 ## Status
 
