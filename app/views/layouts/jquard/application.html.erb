@@ -14,12 +14,18 @@
   <%= javascript_include_tag "jquard/application", type: "module" %>
 </head>
 <body class="jq-body">
+  <header class="jq-topbar">
+    <div class="jq-topbar-start">
+      <span class="jq-brand"><%= Jquard.config.brand_name %></span>
+    </div>
+
+    <div class="jq-topbar-end">
+      <%= render "jquard/user_menu" %>
+    </div>
+  </header>
+
   <div class="jq-shell">
     <aside class="jq-sidebar">
-      <div class="jq-sidebar-header">
-        <span class="jq-brand"><%= Jquard.config.brand_name %></span>
-      </div>
-
       <nav class="jq-sidebar-nav">
         <% jquard_navigation.each do |group, resources| %>
           <div>
@@ -43,14 +49,6 @@
     </aside>
 
     <div class="jq-main">
-      <header class="jq-topbar">
-        <nav class="jq-breadcrumbs">
-          <% if @resource %>
-            <span><%= @resource.navigation_label %></span>
-          <% end %>
-        </nav>
-      </header>
-
       <main class="jq-content">
         <% if notice.present? %>
           <div class="jq-toast" role="status">

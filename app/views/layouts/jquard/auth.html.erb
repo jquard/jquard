@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= Jquard.config.brand_name %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= jquard_theme_style %>
+  <%= yield :head %>
+
+  <%= stylesheet_link_tag "jquard/application", media: "all" %>
+</head>
+<body class="jq-body">
+  <% if notice.present? %>
+    <div class="jq-toast" role="status">
+      <%= jquard_icon("check-circle", css_class: "jq-toast-icon") %>
+      <span><%= notice %></span>
+    </div>
+  <% end %>
+
+  <main class="jq-auth">
+    <div class="jq-auth-card">
+      <header class="jq-auth-header">
+        <span class="jq-brand"><%= Jquard.config.brand_name %></span>
+
+        <% if content_for?(:heading) %>
+          <h1 class="jq-auth-heading"><%= yield :heading %></h1>
+        <% end %>
+
+        <% if content_for?(:subheading) %>
+          <p class="jq-auth-subheading"><%= yield :subheading %></p>
+        <% end %>
+      </header>
+
+      <% if alert.present? %>
+        <p class="jq-auth-flash jq-auth-flash--alert" role="alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </main>
+</body>
+</html>

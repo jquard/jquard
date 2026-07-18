@@ -1,0 +1,45 @@
+<% content_for :heading, "Edit #{resource_name.to_s.humanize.downcase}" %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "jq-auth-form" }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="jq-field">
+    <%= f.label :email, "Email address", class: "jq-label" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "jq-input" %>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p class="jq-helper-text">Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+  </div>
+
+  <div class="jq-field">
+    <%= f.label :password, class: "jq-label" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "jq-input" %>
+    <p class="jq-helper-text">
+      Leave blank if you don't want to change it<% if @minimum_password_length %> — <%= @minimum_password_length %> characters minimum<% end %>
+    </p>
+  </div>
+
+  <div class="jq-field">
+    <%= f.label :password_confirmation, "Confirm password", class: "jq-label" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "jq-input" %>
+  </div>
+
+  <div class="jq-field">
+    <%= f.label :current_password, class: "jq-label" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "jq-input" %>
+    <p class="jq-helper-text">We need your current password to confirm your changes</p>
+  </div>
+
+  <%= f.submit "Update", class: "jq-btn jq-btn--primary jq-btn--block" %>
+<% end %>
+
+<div class="jq-auth-divider"></div>
+
+<h2 class="jq-auth-heading">Cancel my account</h2>
+
+<%# The auth layout loads no JS, so data-turbo-confirm would silently not confirm. %>
+<%= button_to "Cancel my account", registration_path(resource_name), method: :delete, form: { onsubmit: "return confirm('Are you sure?')" }, class: "jq-btn jq-btn--danger jq-btn--block" %>
+
+<div class="jq-auth-links">
+  <%= link_to "Back", :back, class: "jq-link" %>
+</div>

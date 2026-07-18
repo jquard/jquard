@@ -19,7 +19,11 @@ module Jquard
       def show_next_steps
         say ""
         say "Jquard is mounted at /#{options[:path]}.", :green
-        say "Generate your first resource with:", :green
+        say ""
+        say "Next: install devise and configure authentication in config/initializers/jquard.rb —", :yellow
+        say "if you do not want your admin panel exposed.", :yellow
+        say ""
+        say "Then generate your first resource with:", :green
         say ""
         say "  bin/rails generate jquard:resource YourModel", :bold
         say ""

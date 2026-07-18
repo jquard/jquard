@@ -29,4 +29,31 @@ class ConfigurationTest < ActiveSupport::TestCase
 
     assert_raises(Jquard::Error) { config.primary_color = :mauve }
   end
+
+  test "has no authenticate block by default" do
+    config = Jquard::Configuration.new
+
+    assert_nil config.authenticate
+  end
+
+  test "has no user menu configuration by default" do
+    config = Jquard::Configuration.new
+
+    assert_nil config.current_user_method
+    assert_nil config.sign_out_path
+    assert_nil config.sign_out_method
+  end
+
+  test "authenticate_with stores the given block" do
+    config = Jquard::Configuration.new
+    config.authenticate_with { :authenticated }
+
+    assert_equal :authenticated, config.authenticate.call
+  end
+
+  test "authenticate_with rejects a call without a block" do
+    config = Jquard::Configuration.new
+
+    assert_raises(Jquard::Error) { config.authenticate_with }
+  end
 end

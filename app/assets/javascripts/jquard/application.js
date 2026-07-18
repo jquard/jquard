@@ -38,3 +38,9 @@ if (window.Turbo) {
 document.addEventListener("change", (event) => {
   if (event.target.matches("[data-jq-autosubmit]")) event.target.form?.requestSubmit()
 })
+
+document.addEventListener("click", (event) => {
+  document.querySelectorAll("details.jq-dropdown[open]").forEach((dropdown) => {
+    if (!dropdown.contains(event.target)) dropdown.removeAttribute("open")
+  })
+})

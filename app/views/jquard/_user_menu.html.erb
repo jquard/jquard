@@ -1,0 +1,23 @@
+<% if (user = jquard_current_user) %>
+  <details class="jq-dropdown jq-user-menu">
+    <summary class="jq-dropdown-trigger" aria-label="Open user menu">
+      <span class="jq-avatar"><%= jquard_user_initials(user) %></span>
+    </summary>
+
+    <div class="jq-dropdown-panel">
+      <div class="jq-dropdown-header">
+        <%= jquard_icon("user-circle", css_class: "jq-dropdown-icon") %>
+        <span class="jq-dropdown-header-label"><%= jquard_user_name(user) %></span>
+      </div>
+
+      <% if (sign_out_path = jquard_sign_out_path) %>
+        <div class="jq-dropdown-list">
+          <%= button_to sign_out_path, method: jquard_sign_out_method, form_class: "jq-dropdown-form", class: "jq-dropdown-list-item" do %>
+            <%= jquard_icon("arrow-left-end-on-rectangle", css_class: "jq-dropdown-icon") %>
+            <span class="jq-dropdown-list-item-label">Sign out</span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </details>
+<% end %>

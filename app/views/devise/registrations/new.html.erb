@@ -1,0 +1,29 @@
+<% content_for :heading, "Sign up" %>
+
+<% content_for :subheading do %>
+  or <%= link_to "sign in to your account", new_session_path(resource_name), class: "jq-link" %>
+<% end %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "jq-auth-form" }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="jq-field">
+    <%= f.label :email, "Email address", class: "jq-label" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "jq-input" %>
+  </div>
+
+  <div class="jq-field">
+    <%= f.label :password, class: "jq-label" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "jq-input" %>
+    <% if @minimum_password_length %>
+      <p class="jq-helper-text"><%= @minimum_password_length %> characters minimum</p>
+    <% end %>
+  </div>
+
+  <div class="jq-field">
+    <%= f.label :password_confirmation, "Confirm password", class: "jq-label" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "jq-input" %>
+  </div>
+
+  <%= f.submit "Sign up", class: "jq-btn jq-btn--primary jq-btn--block" %>
+<% end %>

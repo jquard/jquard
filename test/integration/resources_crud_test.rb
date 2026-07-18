@@ -1,11 +1,16 @@
 require "test_helper"
 
 class ResourcesCrudTest < ActionDispatch::IntegrationTest
+  setup do
+    sign_in users(:admin)
+  end
+
   test "create page renders the dsl-defined form" do
     get "/admin/posts/create"
 
     assert_response :success
     assert_includes response.body, "Create post"
+    assert_select ".jq-breadcrumbs span", text: "Create"
     assert_includes response.body, "jq-section"
     assert_includes response.body, 'name="post[title]"'
     assert_includes response.body, 'name="post[status]"'
@@ -39,6 +44,7 @@ class ResourcesCrudTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_includes response.body, "Edit post"
+    assert_select ".jq-breadcrumbs span", text: "Edit"
     assert_includes response.body, 'value="A Published Post"'
   end
 

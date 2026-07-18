@@ -1,0 +1,21 @@
+<% content_for :heading, "Reset your password" %>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: "jq-auth-form" }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="jq-field">
+    <%= f.label :password, class: "jq-label" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "jq-input" %>
+    <% if @minimum_password_length %>
+      <p class="jq-helper-text"><%= @minimum_password_length %> characters minimum</p>
+    <% end %>
+  </div>
+
+  <div class="jq-field">
+    <%= f.label :password_confirmation, "Confirm password", class: "jq-label" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "jq-input" %>
+  </div>
+
+  <%= f.submit "Reset password", class: "jq-btn jq-btn--primary jq-btn--block" %>
+<% end %>

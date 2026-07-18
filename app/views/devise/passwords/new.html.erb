@@ -1,0 +1,16 @@
+<% content_for :heading, "Forgot password?" %>
+
+<% content_for :subheading do %>
+  or <%= link_to "back to login", new_session_path(resource_name), class: "jq-link" %>
+<% end %>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "jq-auth-form" }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="jq-field">
+    <%= f.label :email, "Email address", class: "jq-label" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "jq-input" %>
+  </div>
+
+  <%= f.submit "Send email", class: "jq-btn jq-btn--primary jq-btn--block" %>
+<% end %>

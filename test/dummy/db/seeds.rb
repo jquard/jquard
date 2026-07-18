@@ -1,3 +1,7 @@
+User.find_or_create_by!(email: "admin@example.com") do |user|
+  user.password = "password"
+end
+
 adjectives = %w[Modern Practical Hidden Essential Surprising Timeless Bold Quiet Radical Everyday]
 topics = [
   "Rails Engines", "Hotwire Patterns", "Admin Panels", "SQLite in Production",
