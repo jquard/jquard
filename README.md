@@ -2,7 +2,7 @@
 
 Build modern admin panels and apps in Ruby on Rails.
 
-Jquard is a mountable Rails engine, inspired by [Filament PHP](https://filamentphp.com). With Jquard, you can simply describe your models with a chainable Ruby DSL and get a functional and beautiful app.
+Jquard is a mountable Rails engine, inspired by [Filament PHP](https://filamentphp.com). With Jquard, you can simply describe your models with a chainable Ruby DSL and get a beautiful and functional admin panel.
 
 ![The Jquard admin panel](https://raw.githubusercontent.com/jquard/jquard/main/docs/images/posts.png)
 
