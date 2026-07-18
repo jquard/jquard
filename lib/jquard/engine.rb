@@ -19,9 +19,6 @@ module Jquard
       Jquard.registry.clear
       Jquard.eager_load_resources!
 
-      # defined?(::DeviseController) would be false here even with Devise
-      # installed: the constant is autoloadable and defined? never triggers
-      # autoload. Check the Devise module, then let the reference load it.
       ::DeviseController.include(Jquard::AuthLayout) if defined?(::Devise)
     end
   end
