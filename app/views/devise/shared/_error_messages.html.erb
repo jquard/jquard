@@ -1,12 +1,12 @@
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-temporary>
-    <h2>
+  <div id="error_explanation" class="jq-auth-errors" data-turbo-temporary>
+    <p class="jq-auth-errors-title">
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
                  resource: resource.class.model_name.human.downcase)
        %>
-    </h2>
-    <ul>
+    </p>
+    <ul class="jq-auth-errors-list">
       <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>

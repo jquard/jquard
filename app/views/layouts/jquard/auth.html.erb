@@ -12,15 +12,29 @@
   <%= stylesheet_link_tag "jquard/application", media: "all" %>
 </head>
 <body class="jq-body">
+  <% if notice.present? %>
+    <div class="jq-toast" role="status">
+      <%= jquard_icon("check-circle", css_class: "jq-toast-icon") %>
+      <span><%= notice %></span>
+    </div>
+  <% end %>
+
   <main class="jq-auth">
     <div class="jq-auth-card">
-      <span class="jq-brand"><%= Jquard.config.brand_name %></span>
+      <header class="jq-auth-header">
+        <span class="jq-brand"><%= Jquard.config.brand_name %></span>
+
+        <% if content_for?(:heading) %>
+          <h1 class="jq-auth-heading"><%= yield :heading %></h1>
+        <% end %>
+
+        <% if content_for?(:subheading) %>
+          <p class="jq-auth-subheading"><%= yield :subheading %></p>
+        <% end %>
+      </header>
 
       <% if alert.present? %>
         <p class="jq-auth-flash jq-auth-flash--alert" role="alert"><%= alert %></p>
-      <% end %>
-      <% if notice.present? %>
-        <p class="jq-auth-flash jq-auth-flash--notice" role="status"><%= notice %></p>
       <% end %>
 
       <%= yield %>

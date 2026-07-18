@@ -458,6 +458,79 @@
   .jq-btn--danger {
     @apply bg-red-600 text-white hover:bg-red-500;
   }
+
+  .jq-btn--block {
+    @apply w-full justify-center;
+  }
+
+  .jq-auth {
+    @apply flex min-h-dvh flex-col items-center justify-center px-4;
+  }
+
+  .jq-auth-card {
+    @apply my-16 flex w-full max-w-lg flex-col gap-y-6 bg-white px-6 py-12 shadow-sm ring-1 ring-gray-950/5 sm:rounded-xl sm:px-12;
+  }
+
+  .jq-auth-header {
+    @apply flex flex-col items-center;
+  }
+
+  .jq-auth-header .jq-brand {
+    @apply mb-4;
+  }
+
+  .jq-auth-heading {
+    @apply text-center text-2xl font-bold tracking-tight text-gray-950;
+  }
+
+  .jq-auth-subheading {
+    @apply mt-2 text-center text-sm text-gray-500;
+  }
+
+  .jq-auth-form {
+    @apply grid gap-y-6;
+  }
+
+  .jq-auth-flash {
+    @apply rounded-lg px-4 py-3 text-center text-sm font-medium ring-1;
+  }
+
+  .jq-auth-flash--alert {
+    @apply bg-red-50 text-red-700 ring-red-600/20;
+  }
+
+  .jq-auth-links {
+    @apply flex flex-col items-center gap-y-2;
+  }
+
+  .jq-auth-divider {
+    @apply border-t border-gray-200;
+  }
+
+  .jq-label-row {
+    @apply flex items-center justify-between;
+  }
+
+  .jq-link {
+    @apply text-sm font-semibold hover:underline;
+    color: var(--jq-primary-600);
+  }
+
+  .jq-link:hover {
+    color: var(--jq-primary-500);
+  }
+
+  .jq-auth-errors {
+    @apply rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700 ring-1 ring-red-600/20;
+  }
+
+  .jq-auth-errors-title {
+    @apply font-semibold;
+  }
+
+  .jq-auth-errors-list {
+    @apply mt-1 list-disc ps-5;
+  }
 }
 
 @keyframes jq-toast-out {
