@@ -1,9 +1,15 @@
 <header class="jq-page-header">
-  <h1 class="jq-page-title"><%= @page.title %></h1>
-  <%= link_to new_resource_path(@resource.slug), class: "jq-btn jq-btn--primary" do %>
-    <%= jquard_icon("plus", css_class: "jq-btn-icon") %>
-    <span>New <%= @resource.singular_label.downcase %></span>
-  <% end %>
+  <div>
+    <%= render "jquard/breadcrumbs", crumbs: [ [ @resource.navigation_label, resource_path(@resource.slug) ], [ "List", nil ] ] %>
+    <h1 class="jq-page-title"><%= @page.title %></h1>
+  </div>
+
+  <div class="jq-page-header-actions">
+    <%= link_to new_resource_path(@resource.slug), class: "jq-btn jq-btn--primary" do %>
+      <%= jquard_icon("plus", css_class: "jq-btn-icon") %>
+      <span>New <%= @resource.singular_label.downcase %></span>
+    <% end %>
+  </div>
 </header>
 
 <%= turbo_frame_tag "jquard-table", data: { turbo_action: "advance" } do %>

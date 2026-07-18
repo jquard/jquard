@@ -10,6 +10,7 @@ class ResourcesCrudTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_includes response.body, "Create post"
+    assert_select ".jq-breadcrumbs span", text: "Create"
     assert_includes response.body, "jq-section"
     assert_includes response.body, 'name="post[title]"'
     assert_includes response.body, 'name="post[status]"'
@@ -43,6 +44,7 @@ class ResourcesCrudTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_includes response.body, "Edit post"
+    assert_select ".jq-breadcrumbs span", text: "Edit"
     assert_includes response.body, 'value="A Published Post"'
   end
 

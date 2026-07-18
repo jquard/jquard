@@ -21,6 +21,13 @@ class ResourcesIndexTest < ActionDispatch::IntegrationTest
     assert_includes response.body, "--jq-primary-600: #cc342d"
   end
 
+  test "page header shows breadcrumbs linking back to the resource" do
+    get "/admin/posts"
+
+    assert_select ".jq-breadcrumbs a[href=?]", "/admin/posts", text: "Posts"
+    assert_select ".jq-breadcrumbs span", text: "List"
+  end
+
   test "root redirects to the first registered resource" do
     get "/admin"
 

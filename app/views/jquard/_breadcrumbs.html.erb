@@ -1,0 +1,17 @@
+<nav class="jq-breadcrumbs">
+  <ol class="jq-breadcrumbs-list">
+    <% crumbs.each_with_index do |(label, url), index| %>
+      <li class="jq-breadcrumbs-item">
+        <% unless index.zero? %>
+          <%= jquard_icon("solid/chevron-right", css_class: "jq-breadcrumbs-item-separator") %>
+        <% end %>
+
+        <% if url %>
+          <%= link_to label, url %>
+        <% else %>
+          <span><%= label %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ol>
+</nav>

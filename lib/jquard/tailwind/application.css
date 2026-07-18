@@ -1,20 +1,22 @@
 @import "tailwindcss" source(none);
 
+@layer base {
+  html:has(> .jq-body) {
+    @apply bg-gray-50;
+  }
+}
+
 @layer components {
   .jq-body {
     @apply min-h-screen bg-gray-50 font-sans text-gray-950 antialiased;
   }
 
   .jq-shell {
-    @apply flex min-h-screen;
+    @apply flex min-h-[calc(100dvh-4rem)];
   }
 
   .jq-sidebar {
-    @apply fixed inset-y-0 left-0 z-20 flex w-72 flex-col bg-white ring-1 ring-gray-950/5;
-  }
-
-  .jq-sidebar-header {
-    @apply flex h-16 shrink-0 items-center px-6;
+    @apply sticky top-16 z-20 flex h-[calc(100dvh-4rem)] w-72 shrink-0 flex-col;
   }
 
   .jq-brand {
@@ -23,7 +25,7 @@
   }
 
   .jq-sidebar-nav {
-    @apply flex flex-1 flex-col gap-y-7 overflow-y-auto px-4 py-6;
+    @apply flex flex-1 flex-col gap-y-7 overflow-y-auto px-6 py-8;
   }
 
   .jq-nav-group-label {
@@ -52,19 +54,19 @@
   }
 
   .jq-main {
-    @apply flex-1 pl-72;
+    @apply min-w-0 flex-1;
   }
 
   .jq-topbar {
-    @apply sticky top-0 z-10 flex h-16 items-center justify-between bg-white/80 px-6 ring-1 ring-gray-950/5 backdrop-blur lg:px-8;
+    @apply sticky top-0 z-30 flex h-16 items-center bg-white px-6 shadow-sm ring-1 ring-gray-950/5 lg:px-8;
   }
 
-  .jq-breadcrumbs {
-    @apply flex items-center gap-x-2 text-sm font-medium text-gray-500;
+  .jq-topbar-start {
+    @apply me-6 flex items-center;
   }
 
-  .jq-breadcrumb-sep {
-    @apply h-4 w-4 text-gray-400;
+  .jq-topbar-end {
+    @apply ms-auto flex items-center gap-x-4;
   }
 
   .jq-content {
@@ -72,7 +74,31 @@
   }
 
   .jq-page-header {
-    @apply mb-6 flex items-center justify-between;
+    @apply mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .jq-page-header .jq-breadcrumbs {
+    @apply mb-2 hidden sm:block;
+  }
+
+  .jq-page-header-actions {
+    @apply flex shrink-0 items-center gap-3 sm:mt-7;
+  }
+
+  .jq-breadcrumbs-list {
+    @apply flex flex-wrap items-center gap-x-2;
+  }
+
+  .jq-breadcrumbs-item {
+    @apply flex items-center gap-x-2 text-sm font-medium text-gray-500;
+  }
+
+  .jq-breadcrumbs-item a {
+    @apply transition duration-75 hover:text-gray-700;
+  }
+
+  .jq-breadcrumbs-item-separator {
+    @apply flex size-4 text-gray-400;
   }
 
   .jq-page-title {
