@@ -263,7 +263,7 @@ User.create!(email: "admin@example.com", password: "a-good-password")
 ```
 
 Keep `:registerable` if you *do* want sign-up (a SaaS app, for instance) —
-Jquard renders the registration screens either way.
+Jquard ships registration views, and they'll be styled and ready to use.
 
 ### 2. Point Jquard at it
 
