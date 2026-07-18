@@ -1,8 +1,8 @@
 # Jquard
 
-Build modern admin panels and apps in Ruby on Rails with a few lines of code.
+Build modern admin panels and apps in Ruby on Rails with just a few lines of code.
 
-Jquard is a mountable Rails engine, inspired by [Filament](https://filamentphp.com) from the Laravel ecosystem. With Jquard, you can describe your models with a chainable Ruby DSL and get searchable, sortable, and paginated tables — styled with Tailwind and Heroicons, and driven by Rails defaults.
+Jquard is a mountable Rails engine, inspired by [Filament PHP](https://filamentphp.com). With Jquard, you can describe your models with a chainable Ruby DSL and get searchable, sortable, and paginated tables — styled with Tailwind and Heroicons, and driven by Rails defaults.
 
 The built-in generator reads your models and writes the first version for you, so you never start from a blank file.
 
@@ -10,12 +10,10 @@ The built-in generator reads your models and writes the first version for you, s
 
 ## What you get
 
-- **Tables** with search, sortable columns, pagination, status badges, and boolean icons.
-- **Forms** for creating and editing records, with section layouts, validation errors, and a "Saved" toast.
-- **Row actions** — edit, and delete with a confirmation dialog (not the browser's gray popup).
-- **A generator** that turns a model into a working resource in one command.
-- **Theming** — set a brand name and a primary color; the whole panel follows it.
-- **Authentication** — bring your own (Devise today); Jquard restyles its screens to match the panel.
+- **Beautiful Tables** with search, sortable columns, pagination, status badges, and boolean icons.
+- **Beautiful Forms** for creating and editing records, with section layouts, and validation errors.
+- **Authentication** — supports Devise authentication; Jquard restyles its screens to match the panel.
+- **Generators** that magically turns a model into a working resource in one command.
 
 No JavaScript build step, no Tailwind config in your app. Jquard ships its own compiled CSS.
 
