@@ -27,6 +27,16 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "cancel account button confirms natively without javascript" do
+    sign_in users(:admin)
+    get "/users/edit"
+
+    assert_response :success
+    assert_select "form[onsubmit*=?]", "confirm" do
+      assert_select "button", text: "Cancel my account"
+    end
+  end
+
   test "failed sign in shows the flash alert in the auth layout" do
     post "/users/sign_in", params: { user: { email: "admin@example.com", password: "wrong" } }
 

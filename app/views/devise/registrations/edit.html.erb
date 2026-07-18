@@ -37,7 +37,8 @@
 
 <h2 class="jq-auth-heading">Cancel my account</h2>
 
-<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "jq-btn jq-btn--danger jq-btn--block" %>
+<%# The auth layout loads no JS, so data-turbo-confirm would silently not confirm. %>
+<%= button_to "Cancel my account", registration_path(resource_name), method: :delete, form: { onsubmit: "return confirm('Are you sure?')" }, class: "jq-btn jq-btn--danger jq-btn--block" %>
 
 <div class="jq-auth-links">
   <%= link_to "Back", :back, class: "jq-link" %>
