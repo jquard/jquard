@@ -20,8 +20,7 @@
   }
 
   .jq-brand {
-    @apply text-xl font-bold tracking-tight;
-    color: var(--jq-primary-600);
+    @apply text-xl font-bold tracking-tight text-gray-950;
   }
 
   .jq-sidebar-nav {
