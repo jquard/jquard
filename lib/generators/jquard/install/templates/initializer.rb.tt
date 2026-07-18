@@ -6,4 +6,15 @@ Jquard.configure do |config|
   #
   # config.primary_color = :ruby
   # config.primary_color = { 50 => "#eff6ff", 100 => "#dbeafe", ..., 950 => "#172554" }
+
+  # WARNING: the panel is currently PUBLIC — an empty block means "no
+  # authentication". Do not deploy it this way.
+  #
+  # Jquard does not ship authentication; bring your own. Once Devise is
+  # installed, replace the empty block with the three lines below.
+  # See the README for the full walkthrough.
+  config.authenticate_with { }
+  # config.authenticate_with { authenticate_user! }
+  # config.current_user_method = :current_user
+  # config.sign_out_path = -> { main_app.destroy_user_session_path }
 end
