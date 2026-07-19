@@ -1,10 +1,35 @@
 module Jquard
   module ApplicationHelper
     def jquard_navigation
-      Jquard.registry.resources
-        .sort_by { |resource| [ resource.navigation_sort, resource.navigation_label ] }
-        .group_by(&:navigation_group)
+      (jquard_page_navigation_items + jquard_resource_navigation_items)
+        .sort_by { |item| [ item.sort, item.label ] }
+        .group_by(&:group)
         .sort_by { |group, _| [ group.nil? ? 0 : 1, group.to_s ] }
+    end
+
+    def jquard_page_navigation_items
+      Jquard.registry.pages.select(&:visible?).map do |page|
+        Jquard::Navigation::Item.new(
+          label: page.navigation_label,
+          icon: page.navigation_icon,
+          path: page.route_path == "/" ? root_path : page_path(page.slug),
+          group: page.navigation_group,
+          sort: page.navigation_sort,
+          exact: true
+        )
+      end
+    end
+
+    def jquard_resource_navigation_items
+      Jquard.registry.resources.map do |resource|
+        Jquard::Navigation::Item.new(
+          label: resource.navigation_label,
+          icon: resource.navigation_icon,
+          path: resource_path(resource.slug),
+          group: resource.navigation_group,
+          sort: resource.navigation_sort
+        )
+      end
     end
 
     def jquard_icon(name, css_class: nil)
