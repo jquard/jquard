@@ -27,18 +27,18 @@
   <div class="jq-shell">
     <aside class="jq-sidebar">
       <nav class="jq-sidebar-nav">
-        <% jquard_navigation.each do |group, resources| %>
+        <% jquard_navigation.each do |group, items| %>
           <div>
             <% if group %>
               <p class="jq-nav-group-label"><%= group %></p>
             <% end %>
             <ul class="jq-nav-items">
-              <% resources.each do |resource| %>
+              <% items.each do |item| %>
                 <li>
-                  <%= link_to resource_path(resource.slug),
-                        class: class_names("jq-nav-item", "jq-nav-item--active" => params[:resource_slug] == resource.slug) do %>
-                    <%= jquard_icon(resource.navigation_icon, css_class: "jq-nav-item-icon") %>
-                    <span><%= resource.navigation_label %></span>
+                  <%= link_to item.path,
+                        class: class_names("jq-nav-item", "jq-nav-item--active" => item.active?(request.path)) do %>
+                    <%= jquard_icon(item.icon, css_class: "jq-nav-item-icon") %>
+                    <span><%= item.label %></span>
                   <% end %>
                 </li>
               <% end %>

@@ -1,5 +1,11 @@
 Jquard::Engine.routes.draw do
-  root to: "resources#root"
+  root to: "pages#show", defaults: { page_slug: "dashboard" }
+
+  # Evaluated per request, so it sees the registry as rebuilt by `to_prepare`.
+  # Pages claim the first segment only for slugs they own; everything else
+  # falls through to the resource routes below.
+  get ":page_slug", to: "pages#show", as: :page,
+      constraints: ->(request) { Jquard.registry.page?(request.params[:page_slug]) }
 
   # Fixed routes must be declared above this line: ":resource_slug" matches
   # any first segment, so anything below it would be unreachable.
