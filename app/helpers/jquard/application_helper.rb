@@ -8,7 +8,7 @@ module Jquard
     end
 
     def jquard_page_navigation_items
-      Jquard.registry.pages.select(&:visible?).map do |page|
+      Jquard.registry.pages.map do |page|
         Jquard::Navigation::Item.new(
           label: page.navigation_label,
           icon: page.navigation_icon,

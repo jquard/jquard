@@ -31,22 +31,10 @@ module Jquard
         def navigation_sort
           @navigation_sort || 0
         end
-
-        def visible?
-          true
-        end
-      end
-
-      def slug
-        self.class.slug
       end
 
       def title
         self.class.title
-      end
-
-      def navigation_label
-        self.class.navigation_label
       end
 
       def component

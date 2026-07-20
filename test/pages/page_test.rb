@@ -19,10 +19,6 @@ class Jquard::Pages::PageTest < ActiveSupport::TestCase
     assert_equal "reports-page", ReportsPage.route_path
   end
 
-  test "pages are visible by default" do
-    assert ReportsPage.visible?
-  end
-
   test "component must be defined by the subclass" do
     error = assert_raises(Jquard::Error) { ReportsPage.new.component }
 

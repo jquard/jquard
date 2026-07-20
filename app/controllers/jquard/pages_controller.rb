@@ -6,8 +6,6 @@ module Jquard
           "No Jquard page registered for #{params[:page_slug].inspect}"
       end
 
-      raise ActionController::RoutingError, "Page #{page_class.name} is not visible" unless page_class.visible?
-
       @page = page_class.new
       render @page.component
     end
