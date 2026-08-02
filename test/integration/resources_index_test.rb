@@ -28,12 +28,6 @@ class ResourcesIndexTest < ActionDispatch::IntegrationTest
     assert_select ".jq-breadcrumbs span", text: "List"
   end
 
-  test "root redirects to the first registered resource" do
-    get "/admin"
-
-    assert_redirected_to "/admin/comments"
-  end
-
   test "renders the table inside a turbo frame with dsl-defined cells" do
     get "/admin/posts"
 

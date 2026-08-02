@@ -17,6 +17,7 @@ module Jquard
 
     config.to_prepare do
       Jquard.registry.clear
+      Jquard.registry.register_page(Jquard::Pages::Dashboard)
       Jquard.eager_load_resources!
 
       ::DeviseController.include(Jquard::AuthLayout) if defined?(::Devise)
